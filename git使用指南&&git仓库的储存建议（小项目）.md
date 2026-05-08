@@ -108,7 +108,7 @@ git switch 1a2b3c4 -- main.c
 
 
 
-## git项目建议
+## git项目建议（仅供参考）
 
 ### 一、仓库原则
 
@@ -124,7 +124,7 @@ git switch 1a2b3c4 -- main.c
 
 ### 三、功能分支命名规范
 
-##### 1. 功能开发分支
+1. **功能开发分支**
 
 格式：`feature/功能名`
 
@@ -135,7 +135,7 @@ git switch 1a2b3c4 -- main.c
 - `feature/摄像头驱动`
 - `feature/蓝牙配网`
 
-##### 2. bug 修复分支
+2. **bug 修复分支**
 
 格式：`fix/问题描述`
 
@@ -144,7 +144,7 @@ git switch 1a2b3c4 -- main.c
 - `fix/串口乱码`
 - `fix/电机启停抖动`
 
-##### 3. 文档 / 配置分支
+3. **文档 / 配置分支**
 
 格式：`docs/内容`、`config/配置调整`
 
@@ -234,3 +234,25 @@ git checkout origin/main  # 检出远程main分支到本地
 实线向下的箭头表示拉取，向上的表示推送，虚线向下表示抓取，树杈状可以选择要查看的分支
 
 更加常用的界面是在更改里
+
+![image-20260508190921113](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260508190921113.png)
+
+在消息里可以写提交信息（若要提交必须写），写完提交消息后，你可以先暂存更改，然后再提交，也可以直接点提交，他会提示你是否需要暂存更改（必须先暂存更改，填写提交信息后才能提交（commit））。
+
+<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260508191030543.png" alt="image-20260508191030543" style="zoom:50%;" />
+
+<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260508191445437.png" alt="image-20260508191445437" style="zoom:50%;" />
+
+可以看到图表已经出现了我们提交的消息，但这是在本地仓库。现在我们需要推送到远程仓库，你可以点击推送，也可点击同步更改（本质是先拉取在推送，其实你可以在显示main分支图形的右侧看见0↓1↑，0拉取，1推送）这是非常合理的。
+
+![image-20260508191942657](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260508191942657.png)
+
+可以看到远程仓库中已经生成了我们提交的信息了。
+
+#### 4.合并分支
+
+
+
+## 常见的一些问题以及解决方式
+
+#### 1.我本地修改了一部分文件，但是远程仓库更新了，现在我想要整合远程仓库修改的内容和我修改的文件，如何解决？
