@@ -285,11 +285,13 @@ git commit -m "这里写你做了什么修改" #提交更改
 
 
 
-#### 4.创建并发布分支
+#### 4.创建，发布，删除，合并分支
+
+##### **创建分支**
 
 为了演示后续合并分支操作我创建了一个新的分支merge_branch_test
 
-点击存储库中树状图形旁边的main
+点击存储库中树状图形旁边的main（**这里也可以切换分支**）
 
 ![image-20260508172552992](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260508172552992.png)
 
@@ -306,6 +308,78 @@ git switch -c 你的分支名 #创建并切换到对应分支
 ```
 
 
+
+##### **发布分支**
+
+发布分支是**针对远程没有与本地分支同名**的情况而言的。（前提你要有发布分支的权限）
+
+它实际上不只是一个步骤，在这里我通过结合命令行的形式加以解释整个流程：
+
+```bash
+#较为标准的流程是这样
+# 1. 创建并切换分支
+git switch main
+git pull  #这两步是为了同步最新的内容
+git switch -c release/v1.0 #切换到要发布的分支
+
+# 2. 提交(如果有更改)
+git add .
+git commit -m "发布v1.0"
+
+# 3. 发布
+git push -u origin release/v1.0
+```
+
+但是你运用Vs Code 的时候点击发布分支实际上就是对应的第三步（这个主要看个人理解）
+
+点击发布分支即可
+
+![image-20260509194055717](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509194055717.png)
+
+![image-20260509194308241](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509194308241.png)
+
+这时我们看见远程仓库中已经有了对应的分支。
+
+##### 删除分支
+
+删除不必要的分支
+
+**首先切换到除需要删除分支以外的其它分支**，然后删除分支即可
+
+<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509194821025.png" alt="image-20260509194821025" style="zoom:50%;" />
+
+点击删除分支
+
+![image-20260509194849248](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509194849248.png)
+
+删除后我们再点击树状图形，看到本地已经没有分支了
+
+<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509194928270.png" alt="image-20260509194928270" style="zoom:50%;" />
+
+
+
+你也可以在图表中右键点击某分支最新提交的一条，删除分支。
+
+<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509195555900.png" alt="image-20260509195555900" style="zoom:33%;" />
+
+**如果你要删除远程分支**可以采用同样的方式（前提是你要有权限，在后面的问题中我会提到）
+
+命令行代码
+
+```bash
+git switch 非要删除的分支名 
+
+#本地分支删除
+git branch -d 分支名 #安全删除(该分支已被合并)
+git branch -D 分支名 #强制删除(该分支未被合并)
+
+#远程分支删除
+git push 远程名 --delete 分支名
+```
+
+
+
+##### 合并分支
 
 
 
