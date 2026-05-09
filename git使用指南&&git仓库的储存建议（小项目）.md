@@ -377,11 +377,42 @@ git branch -D 分支名 #强制删除(该分支未被合并)
 git push 远程名 --delete 分支名
 ```
 
-
-
 ##### 合并分支
 
+现在我想要将merge_branch_test（A）合并到main(B) 里
 
+1.切换到main 分支（你想要合并到的分支(B)）
+
+<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509200505398.png" alt="image-20260509200505398" style="zoom: 50%;" />
+
+可以看到当前活跃分支是main，由于我的分支是在main最新的提交后创建的，main分支的是落后于merge分支的，所以我想要将merge分支合并到main来更新main分支。
+
+```bash
+git switch main
+```
+
+2.拉取最新进度
+
+在多人协作时，你不能保证你在写merge 分支的时候，别人有没有对main分支进行更新，所以我们需要拉取最新的进度（git pull）**为了让大家更好的理解这种情况，我模拟了一个情景**：
+
+<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509202734751.png" alt="image-20260509202734751" style="zoom:50%;" />
+
+可以看到有个MuBurn 在我创建merge分支的时候，它创建了一个delete_test分支把一部分不需要的内容给删去了，然后它给合并到了main分支，导致现在的main分支被删去了不需要的一部分文件，如果我直接合并，会直接覆盖他的成果（这种情况git是不会报错的，因为没有造成冲突）所以我们应该采用**先抓后拉**（fetch，pull）的方法更新最新进度。
+
+<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509203212015.png" alt="image-20260509203212015" style="zoom:50%;" />
+
+对应git
+
+```bash
+git fetch
+git pull
+```
+
+3.合并分支
+
+点击合并分支即可
+
+<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509201552485.png" alt="image-20260509201552485" style="zoom:50%;" />
 
 ## 常见的一些问题以及解决方式
 
