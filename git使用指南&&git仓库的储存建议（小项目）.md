@@ -397,7 +397,7 @@ git switch main
 
 <img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509202734751.png" alt="image-20260509202734751" style="zoom:50%;" />
 
-可以看到有个MuBurn 在我创建merge分支的时候，它创建了一个delete_test分支把一部分不需要的内容给删去了，然后它给合并到了main分支，导致现在的main分支被删去了不需要的一部分文件，如果我直接合并，会直接覆盖他的成果（这种情况git是不会报错的，因为没有造成冲突）所以我们应该采用**先抓后拉**（fetch，pull）的方法更新最新进度。
+可以看到有个MuBurn 在我创建merge分支的时候，它创建了一个delete_test分支把一部分不需要的内容给删去了，然后它给合并到了main分支，导致现在的main分支被删去了不需要的一部分文件，如果我直接合并，会直接覆盖他的成果（这种情况git是不会报错的，因为没有造成冲突）所以我们应该采用**先抓后拉**（fetch，pull）的方法更新最新进度。（分别对应图表中虚线和实现的向下的箭头）
 
 <img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509204951481.png" alt="image-20260509204951481" style="zoom:50%;" />
 
