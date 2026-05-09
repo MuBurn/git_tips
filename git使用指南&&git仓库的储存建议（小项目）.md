@@ -381,9 +381,9 @@ git push 远程名 --delete 分支名
 
 ##### 合并分支
 
-我增加了一些冲突内容，使的情况更加符合实际（Git 冲突 = 同一文件、同一位置，被两个分支改成了不一样的内容）
+**我增加了一些冲突内内容（Git 冲突 = 同一文件、同一位置，被两个分支改成了不一样的内容）并且模拟了多人协作过程中出现的一种特殊情况，使情况更加真实**：可以看到有个猪头MuBurn 在我创建merge分支的时候，它创建了一个delete_test分支把一部分**重要内容**给删去了，然后它给合并到了main分支，**导致现在的main分支被删去了一部分文件**（留意这里）
 
-比如相对于![image-20260509211420895](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509211420895.png)
+比如相对于![](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509211420895.png)
 
 图片中第三个蓝色节点，在mergebranch 中，我删去了这里的首次![image-20260509211516615](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509211516615.png)
 
@@ -415,6 +415,85 @@ git reset --hard HEAD~1
 
 来取消合并（没有推送到远程）
 
-## 常见的一些问题以及解决方式
+**在这个时候我们重新看到main分支下的资源管理器**
 
-#### 1.我本地修改了一部分文件，但是远程仓库更新了，现在我想要整合远程仓库修改的内容和我修改的文件，如何解决？
+![image-20260509223819807](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509223819807.png)
+
+我们发现并没有被猪头MuBurn删除的文件！我们聚焦图表，可以看到被删除的git使用指南pdf已经helloworld.c**没有**在合并的时候合入main.c！！！
+
+![image-20260509223936062](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509223936062.png)
+
+这是因为Git的隐藏机制
+
+**Git 认为：main 已经明确删除了这些文件**
+
+**你合并进来的内容，不允许自动恢复它们！**
+
+这不是 bug
+
+这是 Git **保护主线不被意外恢复已删文件** 的机制。
+
+这时我们要恢复这俩个文件可以采用命令行
+
+```bash
+git checkout 分支名 -- 文件名
+
+git checkout merge_branch_test -- mergebranchtes\hello.world.c
+PS C:\Users\13981\Desktop\university\git_tips> git checkout merge_branch_test -- "git使用指南&&git仓库的储存建议（小项目）.pdf" 
+```
+
+然后提交更改即可，可以看到文件已经恢复。
+
+![image-20260509230843282](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509230843282.png)
+
+鉴于这种情况，为防止有人乱改main分支的代码我们可以修改仓库的一些设置，来避免
+
+[跳转到仓库权限设置（ctrl+鼠标左键点击这里）](#仓库权限设置)
+
+##### 5.克隆仓库
+
+## 仓库权限设置
+
+### 仓库权限
+
+为了防止像MuBurn一样的蠢蛋对重要的分支到处修改让我们最终的代码变得丑陋，我们可以设置仓库的规则，来限制协作者。
+
+在Git Hub 中点击Settings->Rules->Rulesets
+
+创建一个新的ruleset0
+
+<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509233001914.png" alt="image-20260509233001914" style="zoom:50%;" />
+
+Name 按自己的喜好取即可，我们主要在Target branch中添加 default branch 保护我们的默认分支
+
+<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509233429361.png" alt="image-20260509233429361" style="zoom:50%;" />
+
+在下面的设定中勾选这个选项，主要是在合并分支前，需要提交一个**pull request（后续简称pr）**，经过同意后才能合并（注意，开启这个选项之后，你的本地main分支在实际意义上已经变成了**"只读"**分支，虽然你仍能够修改本地的main分支，但是**你已经无法将它推送到远程仓库**。因此，**正确的做法是抓取和拉取远程的main分支，然后再在这个基础上创建一个新的分支，在这个新分支上修改，最后提交pr**）
+
+![image-20260509234156424](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509234156424.png)
+
+也可以根据需求选择
+
+限制创建分支，跟新分支，删除分支。（这些操作都是针对远程仓库的，本地分支你想怎么改就怎么改）
+
+![image-20260509235058770](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509235058770.png)
+
+![image-20260509235415260](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509235415260.png)
+
+改完后激活它即可。
+
+现在我们可以看到MuBurn 在本地main合并delete_try之后想要推送到主分支的时候就出现了报错！
+
+<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509235856101.png" alt="image-20260509235856101" style="zoom:50%;" />
+
+这里我们就要提交pr了
+
+#### 提交pr
+
+我们可以在GitHub上提交pr也可以在Vs Code 上装插件GitHub pull request 插件。这里两种方式都简单介绍一下
+
+##### GitHub提交pr
+
+##### VsCode提交pr
+
+## 提交规范
