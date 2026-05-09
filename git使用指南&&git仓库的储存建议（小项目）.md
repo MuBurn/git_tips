@@ -39,7 +39,7 @@ Author：MuBurn          Start date：2026.5.8
 **个人理解**：就实际应用的时候来说：git add 是我们每次 commit 前都要进行的操作，只有暂存更改之后我们才能提交。而git stash 一般是用在我们本地修改了一些文件，但是这个时候远程仓库有更新，我们想要拉取远程仓库最新的代码，如果直接拉取会失败（会提示你清理工作区），需要先暂存文件再拉取。
 
 ```bash
-# 1. 初始化本地仓库（首次）
+# 1. 初始化本地仓库
 cd 你的项目文件夹
 git init
 
@@ -399,7 +399,11 @@ git switch main
 
 可以看到有个MuBurn 在我创建merge分支的时候，它创建了一个delete_test分支把一部分不需要的内容给删去了，然后它给合并到了main分支，导致现在的main分支被删去了不需要的一部分文件，如果我直接合并，会直接覆盖他的成果（这种情况git是不会报错的，因为没有造成冲突）所以我们应该采用**先抓后拉**（fetch，pull）的方法更新最新进度。
 
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509203212015.png" alt="image-20260509203212015" style="zoom:50%;" />
+<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509204951481.png" alt="image-20260509204951481" style="zoom:50%;" />
+
+![image-20260509205115321](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509205115321.png)
+
+可以看见现在的main分支下已经没有了hello_world.c以及导出的pdf文件
 
 对应git
 
@@ -410,9 +414,7 @@ git pull
 
 3.合并分支
 
-点击合并分支即可
-
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509201552485.png" alt="image-20260509201552485" style="zoom:50%;" />
+<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509205443149.png" alt="image-20260509205443149" style="zoom:50%;" />
 
 ## 常见的一些问题以及解决方式
 
