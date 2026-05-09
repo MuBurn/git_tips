@@ -1,6 +1,6 @@
 # git使用指南
 
-Author：Mburn          Date：2026.5.8
+Author：MuBurn          Start date：2026.5.8
 
 [TOC]
 
@@ -24,17 +24,19 @@ Author：Mburn          Date：2026.5.8
 | **添加远程仓库（关联）git remote add origin 地址** | 绑定本地存档到官方云端（告诉本地存档：“你的云端同步地址是这个”） | 把本地仓库和远程仓库关联，后续才能推送 / 拉取                |
 | **抓取（git fetch）**                              | 下载云端所有最新存档信息到本地，但不合并到你正在玩的存档（只看更新，不影响当前进度） | 获取远程仓库的最新内容                                       |
 | **git switch**                                     | 相当于 “切换游戏存档的平行宇宙”—— 比如从「练法师的 feature 分支存档」切回「main 主线存档」，或从主线切到新的功能存档。 | 查看/切换仓库                                                |
+| **克隆仓库（ git clone） **                        | 从官方云端，把完整游戏存档**下载到本地**                     | 第一次获取项目：直接复制远程仓库所有代码到本地电脑           |
+| **合并分支（ git merge）**                         | 把「测试存档的进度」合并到「最终通关存档」                   | 将功能分支的代码，整合到主分支（完成功能上线）               |
 
 **在这里要提一下git stash 与 git add的区别**：
 
-在这里AI的进一步解释是：
+**在这里AI的进一步解释**是：
 
 | 命令        | 中文核心释义               | 游戏存档比喻                                                 | 核心用途                                                     |
 | ----------- | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | `git add`   | 暂存「要提交的修改」       | 玩游戏时，选中 “打完第 3 关、捡新装备” 这些进度，标记为「要保存到正式存档的内容」 | 为 `git commit` 做准备，把修改纳入 “待正式存档” 清单（还在工作区内） |
 | `git stash` | 暂存「不想提交的临时修改」 | 打 BOSS 前，先把 “瞎试的操作、没打完的进度” 临时存起来（不进正式存档），先切去打主线 | 临时藏起未完成的修改，让工作区变干净（比如拉取远程代码、切分支） |
 
-就实际应用的时候来说：git add 是我们每次 commit 前都要进行的操作，只有暂存更改之后我们才能提交。而git stash 一般是用在我们本地修改了一些文件，但是这个时候远程仓库有更新，我们想要拉取远程仓库最新的代码，如果直接拉取会失败（会提示你清理工作区），需要先暂存文件再拉取。
+**个人理解**：就实际应用的时候来说：git add 是我们每次 commit 前都要进行的操作，只有暂存更改之后我们才能提交。而git stash 一般是用在我们本地修改了一些文件，但是这个时候远程仓库有更新，我们想要拉取远程仓库最新的代码，如果直接拉取会失败（会提示你清理工作区），需要先暂存文件再拉取。
 
 ```bash
 # 1. 初始化本地仓库（首次）
@@ -45,6 +47,7 @@ git init
 git remote add origin https://github.com/用户名/仓库名.git
 
 # 3. 拉取远程最新代码（同步云端存档）
+# 格式：git pull 远程仓库名称 分支名
 git pull origin main
 
 # 4. 创建功能分支并切换
@@ -69,10 +72,10 @@ git checkout main
 git merge feature/电机控制
 git push origin main
 
-#从所有远程抓取
+# 9. 从所有远程抓取
 git fetch --all
 
-#多个远程仓库时
+# 10. 多个远程仓库时
 
 # 查看所有远程仓库的名称和地址（fetch/push地址）
 git remote -v
@@ -90,6 +93,7 @@ git pull https://github.com/你的用户名/仓库名。git main  # 拉取github
 
 git remote set-url gitee https://gitee.com/你的用户名/新仓库名.git #修改关联的远程仓库
 
+# 11.切换分支
 #git switch
 git switch [选项] [分支名/提交ID/文件路径] #基础语法
 
@@ -104,6 +108,13 @@ git switch -- main.c
 
 # 恢复main.c文件到指定提交ID的状态
 git switch 1a2b3c4 -- main.c
+
+# 12. 克隆项目
+git clone https://github.com/xxx/项目名.git #http
+git clone git@github.com:用户名/仓库名.git #ssh
+
+# 13. 合并分支
+git merge 分支名
 ```
 
 
@@ -196,7 +207,13 @@ main 永远是项目完整、最终可用的代码
 
 ![image-20260508172509556](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260508172509556.png)
 
-一般初始化命名都给origin
+一般初始化命名都给origin 对应的命令是：
+
+origin 就是我们自定义的名字
+
+```bash
+git remote add 自定义名字 仓库地址
+```
 
 对应命令行
 
@@ -243,13 +260,52 @@ git checkout origin/main  # 检出远程main分支到本地
 
 <img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260508191445437.png" alt="image-20260508191445437" style="zoom:50%;" />
 
-可以看到图表已经出现了我们提交的消息，但这是在本地仓库。现在我们需要推送到远程仓库，你可以点击推送，也可点击同步更改（本质是先拉取在推送，其实你可以在显示main分支图形的右侧看见0↓1↑，0拉取，1推送）这是非常合理的。
+可以看到图表已经出现了我们提交的消息，但这是在本地仓库。现在我们需要推送到远程仓库，你可以点击推送，也可点击同步更改（本质是先拉取再推送，其实你可以在显示main分支图形的右侧看见0↓1↑，0拉取，1推送）这是非常合理的。
 
 ![image-20260508191942657](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260508191942657.png)
 
 可以看到远程仓库中已经生成了我们提交的信息了。
 
-#### 4.合并分支
+```bash
+# 拉取远程代码
+# 格式：git pull 远程仓库名称 本地分支名
+git pull origin main
+
+# 推送功能分支到远程
+#格式 git push -u 远程分支名 本地分支名
+git push -u origin feature/电机控制 #第一次推送 （远程仓库如果没有该分支，如果存在同名分支直接用git push 即可）
+git push #后续推送 
+
+git branch  #查看分支名字 带 *号 的是当前分支
+
+#提交
+git add . #暂存所有更改
+git commit -m "这里写你做了什么修改" #提交更改
+```
+
+
+
+#### 4.创建并发布分支
+
+为了演示后续合并分支操作我创建了一个新的分支merge_branch_test
+
+点击存储库中树状图形旁边的main
+
+![image-20260508172552992](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260508172552992.png)
+
+或者说储存库旁边三个点
+
+<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509191454503.png" alt="image-20260509191454503" style="zoom:50%;" />
+
+选择分支，创建新分支。**后续有关操作我就不在放图片了，不然显得有点啰嗦**。
+
+对应代码
+
+```bash
+git switch -c 你的分支名 #创建并切换到对应分支
+```
+
+
 
 
 
