@@ -39,7 +39,7 @@ Author：MuBurn          Start date：2026.5.8
 **个人理解**：就实际应用的时候来说：git add 是我们每次 commit 前都要进行的操作，只有暂存更改之后我们才能提交。而git stash 一般是用在我们本地修改了一些文件，但是这个时候远程仓库有更新，我们想要拉取远程仓库最新的代码，如果直接拉取会失败（会提示你清理工作区），需要先暂存文件再拉取。
 
 ```bash
-# 1. 初始化本地仓库
+# 1. 初始化本地仓库（第一次）
 cd 你的项目文件夹
 git init
 
@@ -189,7 +189,7 @@ main 永远是项目完整、最终可用的代码
 
 点击绿色按钮，即可创建，仓库的具体配置按照自己需求即可，这里不过多说明。
 
-### Vs Code图形化界面&&git 命令行
+### Vs Code图形化界面&&git 命令行（以图形化界面为主）
 
 #### 1. 本地初始化 Git 仓库
 
@@ -377,44 +377,43 @@ git branch -D 分支名 #强制删除(该分支未被合并)
 git push 远程名 --delete 分支名
 ```
 
+
+
 ##### 合并分支
 
-现在我想要将merge_branch_test（A）合并到main(B) 里
+我增加了一些冲突内容，使的情况更加符合实际（Git 冲突 = 同一文件、同一位置，被两个分支改成了不一样的内容）
 
-1.切换到main 分支（你想要合并到的分支(B)）
+比如相对于![image-20260509211420895](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509211420895.png)
 
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509200505398.png" alt="image-20260509200505398" style="zoom: 50%;" />
+图片中第三个蓝色节点，在mergebranch 中，我删去了这里的首次![image-20260509211516615](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509211516615.png)
 
-可以看到当前活跃分支是main，由于我的分支是在main最新的提交后创建的，main分支的是落后于merge分支的，所以我想要将merge分支合并到main来更新main分支。
+在main中我将首次改为第一次，现在让我们来看看合并分支的情况。
+
+<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509211717859.png" alt="image-20260509211717859" style="zoom:50%;" />
+
+如图所示选择合并分支，在弹出的弹框中选择merge分支（分支A）
+
+<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509211806048.png" alt="image-20260509211806048" style="zoom:50%;" />
+
+现在我们看见，出现了合并冲突，我们需要合并更改
+
+<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509213531035.png" alt="image-20260509213531035" style="zoom:50%;" />
+
+比较后选择合适的更改，然后点合并更改中的加号即可暂存更改
+
+![image-20260509213943877](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509213943877.png)
+
+暂存更改后修改提交信息，点击继续，即可完成合并分支。
+
+![image-20260509214138572](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509214138572.png)
+
+可以看见，分支已经合并完成。合并分支完成后，可以删去merge_branch_test(分支A)，如果你不再需要它。如果你不小心合并错了分支可以在命令行中输入：
 
 ```bash
-git switch main
+git reset --hard HEAD~1
 ```
 
-2.拉取最新进度
-
-在多人协作时，你不能保证你在写merge 分支的时候，别人有没有对main分支进行更新，所以我们需要拉取最新的进度（git pull）**为了让大家更好的理解这种情况，我模拟了一个情景**：
-
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509202734751.png" alt="image-20260509202734751" style="zoom:50%;" />
-
-可以看到有个MuBurn 在我创建merge分支的时候，它创建了一个delete_test分支把一部分不需要的内容给删去了，然后它给合并到了main分支，导致现在的main分支被删去了不需要的一部分文件，如果我直接合并，会直接覆盖他的成果（这种情况git是不会报错的，因为没有造成冲突）所以我们应该采用**先抓后拉**（fetch，pull）的方法更新最新进度。（分别对应图表中虚线和实现的向下的箭头）
-
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509204951481.png" alt="image-20260509204951481" style="zoom:50%;" />
-
-![image-20260509205115321](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509205115321.png)
-
-可以看见现在的main分支下已经没有了hello_world.c以及导出的pdf文件
-
-对应git
-
-```bash
-git fetch
-git pull
-```
-
-3.合并分支
-
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509205443149.png" alt="image-20260509205443149" style="zoom:50%;" />
+来取消合并（没有推送到远程）
 
 ## 常见的一些问题以及解决方式
 
