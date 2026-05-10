@@ -528,7 +528,33 @@ Name 按自己的喜好取即可，我们主要在Target branch中添加 default
 
 ##### GitHub提交pr
 
+现在我更新了我的git指南文档
+
+<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511002411170.png" alt="image-20260511002411170" style="zoom:33%;" />
+
+现在我们来到GitHub提交pr，首先打开我们的远程仓库，找到Pull requests，点击new pull request
+
+<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511002538869.png" alt="image-20260511002538869" style="zoom:50%;" />
+
+然后选择你需要的比较的分支，一般是你要合并到的分支作为base，你现在的分支与base进行对比
+
+![image-20260511003006928](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511003006928.png)
+
+比较后写一下描述，然后点击创建pr即可。
+
+
+
 ##### VsCode提交pr
+
+
+
+#### 通过pr
+
+拥有权限的人可以打开pull request 进入 file changed 界面，你可以浏览哪些做出了修改
+
+![image-20260511003909825](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511003909825.png)
+
+你可以在每行的前面点击加号做出评论，最后点击右上角Submit review 可以选择通过或者打回。这里因为自己不能通过自己的pr，我就不演示了。
 
 ## 提交规范
 
