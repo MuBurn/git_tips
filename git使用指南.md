@@ -743,6 +743,12 @@ vscode界面也是对应的，中文描述很清楚，我就不在讲述了
 
 <img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511215424426.png" alt="image-20260511215424426" style="zoom: 50%;" />
 
+通过pr的时候，你可以选择创建一个新的**合并提交（Create a merge commit）**，也可以选择**变基然后合并（Rebase and merge）**即把你功能分支的提交「接」到 main 最新节点后，main 全程一条直线，无 Merge 提交
+
+**不过特别注意！**如果你是用的**变基分支**在开发，最后提交pr的时候也要用**Rebase and merge**通过pr，不然会
+
+导致创建一个
+
 ## 提交规范
 
 你可以用
