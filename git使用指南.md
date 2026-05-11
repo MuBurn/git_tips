@@ -226,15 +226,15 @@ main 永远是项目完整、最终可用的代码
 
 #### 2.添加远程储藏库（远程仓库）
 
-![image-20260508171925339](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260508171925339.png)
+![image-20260508171925339](images\image-20260508171925339.png)
 
 找到远程，里面有添加远程储藏库
 
-![image-20260508172034361](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260508172034361.png)
+![image-20260508172034361](images\image-20260508172034361.png)
 
 选择刚刚创建的仓库（要登陆GitHub）
 
-![image-20260508172509556](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260508172509556.png)
+![image-20260508172509556](images\image-20260508172509556.png)
 
 一般初始化命名都给origin 对应的命令是：
 
@@ -259,7 +259,7 @@ origin  https://github.com/你的用户名/你的仓库名.git (push)
 
 
 
-![image-20260508172552992](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260508172552992.png)
+![image-20260508172552992](images\image-20260508172552992.png)
 
 添加完成后点击存储库中树状图形旁的main，在这里你可以看到远程分支和本地分支。
 
@@ -279,13 +279,13 @@ git checkout origin/main  # 检出远程main分支到本地
 
 通常来说，不管做什么，我们都要先拉取
 
-![image-20260508182901131](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260508182901131.png)
+![image-20260508182901131](images\image-20260508182901131.png)
 
 **实线向下的箭头表示拉取，向上的表示推送，虚线向下表示抓取**，树杈状可以选择要查看的分支
 
 **比较常用的界面是更改**：这里有我们在本地仓库中更改的文件，可以看到现在我们对git使用指南做了一些更改
 
-![image-20260508190921113](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260508190921113.png)
+![image-20260508190921113](images\image-20260508190921113.png)
 
 ###### git stash
 
@@ -293,17 +293,17 @@ git checkout origin/main  # 检出远程main分支到本地
 
 这里我用实际遇到的一个工程举例：
 
-![image-20260511001058381](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511001058381.png)
+![image-20260511001058381](images\image-20260511001058381.png)
 
 我们可以看到main分支中有7个需要拉取，1个可以推送，并且我们此时更改了一个文件，此时拉取会报错。
 
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511001253017.png" alt="image-20260511001253017" style="zoom:50%;" />
+<img src="images\image-20260511001253017.png" alt="image-20260511001253017" style="zoom:50%;" />
 
 此时我们可以暂存我们的更改，然后储藏中**储藏暂存（git stash）** 填入储存信息
 
 拉取后弹出储藏，选择自己需要弹出的储藏即可，弹出后可能会有合并更改，选择自己想要的即可。
 
-![image-20260511001805322](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511001805322.png)
+![image-20260511001805322](images\image-20260511001805322.png)
 
 ****
 
@@ -313,9 +313,9 @@ git checkout origin/main  # 检出远程main分支到本地
 
 **右键点击修改的文件，选择暂存更改，或者点击文件旁边的加号**
 
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260508191030543.png" alt="image-20260508191030543" style="zoom:50%;" />
+<img src="images\image-20260508191030543.png" alt="image-20260508191030543" style="zoom:50%;" />
 
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260508191445437.png" alt="image-20260508191445437" style="zoom:50%;" />
+<img src="images\image-20260508191445437.png" alt="image-20260508191445437" style="zoom:50%;" />
 
 可以看到图表已经出现了我们提交的消息，但这是在本地仓库。
 
@@ -325,7 +325,7 @@ git checkout origin/main  # 检出远程main分支到本地
 
 现在我们需要推送到远程仓库，你可以点击推送，也可点击同步更改（本质是先拉取再推送，其实你可以在显示main分支图形的右侧看见0↓1↑，0拉取，1推送）这是非常合理的。
 
-![image-20260508191942657](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260508191942657.png)
+![image-20260508191942657](images\image-20260508191942657.png)
 
 可以看到远程仓库中已经生成了我们提交的信息了。
 
@@ -356,11 +356,11 @@ git commit -m "这里写你做了什么修改" #提交更改
 
 点击存储库中树状图形旁边的main（**这里也可以切换分支**）
 
-![image-20260508172552992](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260508172552992.png)
+![image-20260508172552992](images\image-20260508172552992.png)
 
 或者说储存库旁边三个点
 
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509191454503.png" alt="image-20260509191454503" style="zoom:50%;" />
+<img src="images\image-20260509191454503.png" alt="image-20260509191454503" style="zoom:50%;" />
 
 选择分支，创建新分支。**后续有关操作我就不在放图片了，不然显得有点啰嗦**。
 
@@ -397,9 +397,9 @@ git push -u origin release/v1.0
 
 点击发布分支即可
 
-![image-20260509194055717](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509194055717.png)
+![image-20260509194055717](images\image-20260509194055717.png)
 
-![image-20260509194308241](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509194308241.png)
+![image-20260509194308241](images\image-20260509194308241.png)
 
 这时我们看见远程仓库中已经有了对应的分支。
 
@@ -411,21 +411,21 @@ git push -u origin release/v1.0
 
 **首先切换到除需要删除分支以外的其它分支**，然后删除分支即可
 
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509194821025.png" alt="image-20260509194821025" style="zoom:50%;" />
+<img src="images\image-20260509194821025.png" alt="image-20260509194821025" style="zoom:50%;" />
 
 点击删除分支
 
-![image-20260509194849248](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509194849248.png)
+![image-20260509194849248](images\image-20260509194849248.png)
 
 删除后我们再点击树状图形，看到本地已经没有分支了
 
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509194928270.png" alt="image-20260509194928270" style="zoom:50%;" />
+<img src="images\image-20260509194928270.png" alt="image-20260509194928270" style="zoom:50%;" />
 
 
 
 你也可以在图表中右键点击某分支最新提交的一条，删除分支。
 
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509195555900.png" alt="image-20260509195555900" style="zoom:33%;" />
+<img src="images\image-20260509195555900.png" alt="image-20260509195555900" style="zoom:33%;" />
 
 **如果你要删除远程分支**可以采用同样的方式（前提是你要有权限，在后面的问题中我会提到）
 
@@ -448,13 +448,13 @@ git push 远程名 --delete 分支名
 
 **我增加了一些冲突内内容（Git 冲突 = 同一文件、同一位置，被两个分支改成了不一样的内容）并且模拟了多人协作过程中出现的一种特殊情况，使情况更加真实**：可以看到有个猪头MuBurn 在我创建merge分支的时候，它创建了一个delete_test分支把一部分**重要内容**给删去了，然后它给合并到了main分支，**导致现在的main分支被删去了一部分文件**（留意这里）
 
-比如相对于![](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509211420895.png)
+比如相对于![](images\image-20260509211420895.png)
 
-图片中第三个蓝色节点，在mergebranch 中，我删去了这里的首次![image-20260509211516615](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509211516615.png)
+图片中第三个蓝色节点，在mergebranch 中，我删去了这里的首次![image-20260509211516615](images\image-20260509211516615.png)
 
 在main中我将首次改为第一次，现在让我们来看看合并分支的情况。
 
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509211717859.png" alt="image-20260509211717859" style="zoom:50%;" />
+<img src="images\image-20260509211717859.png" alt="image-20260509211717859" style="zoom:50%;" />
 
 对应命令行
 
@@ -464,19 +464,19 @@ git merge merge_branch_test
 
 如图所示选择合并分支，在弹出的弹框中选择merge分支（分支A）
 
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509211806048.png" alt="image-20260509211806048" style="zoom:50%;" />
+<img src="images\image-20260509211806048.png" alt="image-20260509211806048" style="zoom:50%;" />
 
 现在我们看见，出现了合并冲突，我们需要合并更改
 
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509213531035.png" alt="image-20260509213531035" style="zoom:50%;" />
+<img src="images\image-20260509213531035.png" alt="image-20260509213531035" style="zoom:50%;" />
 
 比较后选择合适的更改，然后点合并更改中的加号即可暂存更改
 
-![image-20260509213943877](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509213943877.png)
+![image-20260509213943877](images\image-20260509213943877.png)
 
 暂存更改后修改提交信息，点击继续，即可完成合并分支。
 
-![image-20260509214138572](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509214138572.png)
+![image-20260509214138572](images\image-20260509214138572.png)
 
 可以看见，分支已经合并完成。合并分支完成后，可以删去merge_branch_test(分支A)，如果你不再需要它。如果你不小心合并错了分支可以在命令行中输入：
 
@@ -488,11 +488,11 @@ git reset --hard HEAD~1
 
 **在这个时候我们重新看到main分支下的资源管理器**
 
-![image-20260509223819807](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509223819807.png)
+![image-20260509223819807](images\image-20260509223819807.png)
 
 我们发现并没有被猪头MuBurn删除的文件！我们聚焦图表，可以看到被删除的git使用指南pdf已经helloworld.c**没有**在合并的时候合入main.c！！！
 
-![image-20260509223936062](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509223936062.png)
+![](images\image-20260509223936062.png)
 
 这是因为Git的隐藏机制
 
@@ -515,7 +515,7 @@ PS C:\Users\13981\Desktop\university\git_tips> git checkout merge_branch_test --
 
 然后提交更改即可，可以看到文件已经恢复。
 
-![image-20260509230843282](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509230843282.png)
+![image-20260509230843282](images\image-20260509230843282.png)
 
 鉴于这种情况，为防止有人乱改main分支的代码我们可以修改仓库的一些设置，来避免
 
@@ -525,11 +525,11 @@ PS C:\Users\13981\Desktop\university\git_tips> git checkout merge_branch_test --
 
 ##### 变基分支
 
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511175235539.png" alt="image-20260511175235539" style="zoom:50%;" />
+<img src="images\image-20260511175235539.png" alt="image-20260511175235539" style="zoom:50%;" />
 
 现在我们聚焦于图表界面，我在从**上至下第四个蓝色节点**出创建了update_gittips 分支，用于更新main分支的内容，并在**从上至下第二个蓝色节点**处提交了pr，然后**第一个橙色节点**处通过了pr，合并了pr的内容，main分支更新，然后我现在又在update分支上继续更新内容。 **现在我想要将update分支紧接在main分支后面**
 
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511180526459.png" alt="image-20260511180526459" style="zoom:50%;" />
+<img src="images\image-20260511180526459.png" alt="image-20260511180526459" style="zoom:50%;" />
 
 选择main分支（如果你本地main分支已经和远程的同步，就不需要区分本地与远程分支，两个都可以选，如果未同步，需要先同步你可以先切换到main分支拉取，也可以直接用命令行）
 
@@ -543,11 +543,11 @@ git rebase origin/main
 
 变基后的效果是：
 
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511181914344.png" alt="image-20260511181914344" style="zoom:50%;" />
+<img src="images\image-20260511181914344.png" alt="image-20260511181914344" style="zoom:50%;" />
 
 可以看到我们现在的本地update分支紧接到main分支后面了，但是远程的没有同步，点击同步更改即可。最后的效果是
 
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511182235278.png" alt="image-20260511182235278" style="zoom:50%;" />
+<img src="images\image-20260511182235278.png" alt="image-20260511182235278" style="zoom:50%;" />
 
 **为什么会多了一个merge的信息呢**？早期用 merge  合并分支时留下的历史记录，rebase不会改变之前的提交记录，这导致图表界面看着十分混乱。所以不要混用merge 与rebase，一条分支，要么用 merge 到底，要么用 rebase 到底，绝不同时混用。
 
@@ -603,29 +603,29 @@ git merge origin/main  # 第二步：再合并最新的远程main
 
 首先我们要找到对应仓库的地址,点击code展开
 
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511202330199.png" alt="image-20260511202330199" style="zoom:50%;" />
+<img src="images\image-20260511202330199.png" alt="image-20260511202330199" style="zoom:50%;" />
 
 **命令行**：
 
 进入你想要放置仓库的文件夹，打开终端
 
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511202951774.png" alt="image-20260511202951774" style="zoom:50%;" />
+<img src="images\image-20260511202951774.png" alt="image-20260511202951774" style="zoom:50%;" />
 
 ```bash
 git clone 仓库地址
 ```
 
-![image-20260511203122811](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511203122811.png)
+![image-20260511203122811](images\image-20260511203122811.png)
 
 **Vs Code**
 
 打开Vs Code ，ctrl+shift+p 打开终端 ，输入git clone 定位到克隆
 
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511210643467.png" alt="image-20260511210643467" style="zoom:50%;" />
+<img src="images\image-20260511210643467.png" alt="image-20260511210643467" style="zoom:50%;" />
 
 如果你登录到了GitHub账号，他会提示你从GitHub克隆，你可以选择你现有的仓库，和你加入组织的仓库，你也可以直接粘贴仓库的地址
 
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511210938867.png" alt="image-20260511210938867" style="zoom:50%;" />
+<img src="images\image-20260511210938867.png" alt="image-20260511210938867" style="zoom:50%;" />
 
 之后他会弹出选择文件夹界面，选择你想要保存的文件夹即可
 
@@ -652,13 +652,13 @@ git rm 子仓库名
 rm -rf .git/modules/子仓库名
 ```
 
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511214213926.png" alt="image-20260511214213926" style="zoom: 33%;" />
+<img src="images\image-20260511214213926.png" alt="image-20260511214213926" style="zoom: 33%;" />
 
 可以看到我们在终端中添加子仓库后，子仓库出现在了我们的存储库中
 
 #### 6.标签
 
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511230319658.png" alt="image-20260511230319658" style="zoom:50%;" />
+<img src="images\image-20260511230319658.png" alt="image-20260511230319658" style="zoom:50%;" />
 
 选择创建标记即可，输入对应信息即可。
 
@@ -702,11 +702,11 @@ git push origin --delete v1.0.0
 
 创建一个新的ruleset0
 
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509233001914.png" alt="image-20260509233001914" style="zoom:50%;" />
+<img src="images\image-20260509233001914.png" alt="image-20260509233001914" style="zoom:50%;" />
 
 Name 按自己的喜好取即可，我们主要在Target branch中添加 default branch 保护我们的默认分支
 
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509233429361.png" alt="image-20260509233429361" style="zoom:50%;" />
+<img src="images\image-20260509233429361.png" alt="image-20260509233429361" style="zoom:50%;" />
 
 在下面的设定中勾选这个选项，主要是在合并分支前，需要提交一个**pull request（后续简称pr）**，经过同意后才能合并（注意，开启这个选项之后，你的本地main分支在实际意义上已经变成了**"只读"**分支，虽然你仍能够修改本地的main分支，但是**你已经无法将它推送到远程仓库**。因此，**正确的做法是抓取和拉取远程的main分支，然后再在这个基础上创建一个新的分支，在这个新分支上修改，最后提交pr**）
 
@@ -716,7 +716,7 @@ Name 按自己的喜好取即可，我们主要在Target branch中添加 default
 
 限制创建分支，跟新分支，删除分支。（这些操作都是针对远程仓库的，本地分支你想怎么改就怎么改）
 
-![image-20260509235058770](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509235058770.png)
+![image-20260509235058770](images\image-20260509235058770.png)
 
 ![image-20260509235415260](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509235415260.png)
 
@@ -724,7 +724,7 @@ Name 按自己的喜好取即可，我们主要在Target branch中添加 default
 
 现在我们可以看到MuBurn 在本地main合并delete_try之后想要推送到主分支的时候就出现了报错！
 
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260509235856101.png" alt="image-20260509235856101" style="zoom:50%;" />
+<img src="images\image-20260509235856101.png" alt="image-20260509235856101" style="zoom:50%;" />
 
 这里我们就要提交pr了
 
@@ -736,15 +736,15 @@ Name 按自己的喜好取即可，我们主要在Target branch中添加 default
 
 现在我更新了我的git指南文档
 
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511002411170.png" alt="image-20260511002411170" style="zoom:33%;" />
+<img src="images\image-20260511002411170.png" alt="image-20260511002411170" style="zoom:33%;" />
 
 现在我们来到GitHub提交pr，首先打开我们的远程仓库，找到Pull requests，点击new pull request
 
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511002538869.png" alt="image-20260511002538869" style="zoom:50%;" />
+<img src="images\image-20260511002538869.png" alt="image-20260511002538869" style="zoom:50%;" />
 
 然后选择你需要的比较的分支，一般是你要合并到的分支作为base，你现在的分支与base进行对比
 
-![image-20260511003006928](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511003006928.png)
+![image-20260511003006928](images\image-20260511003006928.png)
 
 比较后写一下描述，然后点击创建pr即可。
 
@@ -754,15 +754,15 @@ Name 按自己的喜好取即可，我们主要在Target branch中添加 default
 
 首先在扩展中下载GitHub Pull Requests
 
- <img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511214939813.png" alt="image-20260511214939813" style="zoom:33%;" />
+ <img src="images\image-20260511214939813.png" alt="image-20260511214939813" style="zoom:33%;" />
 
 进入该插件
 
-![image-20260511215103574](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511215103574.png)
+![image-20260511215103574](images\image-20260511215103574.png)
 
 点击创建拉取请求
 
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511215159265.png" alt="image-20260511215159265" style="zoom:33%;" />
+<img src="images\image-20260511215159265.png" alt="image-20260511215159265" style="zoom:33%;" />
 
 做出对应修改即可
 
@@ -772,27 +772,27 @@ Name 按自己的喜好取即可，我们主要在Target branch中添加 default
 
 拥有权限的人可以打开pull request 进入 file changed 界面，你可以浏览哪些做出了修改
 
-![image-20260511003909825](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511003909825.png)
+![image-20260511003909825](images\image-20260511003909825.png)
 
 你可以在每行的前面点击加号做出评论，最后点击右上角Submit review 可以选择通过或者打回。这里因为自己不能通过自己的pr，我就不演示了。
 
 vscode界面也是对应的，中文描述很清楚，我就不在讲述了
 
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511215424426.png" alt="image-20260511215424426" style="zoom: 50%;" />
+<img src="images\image-20260511215424426.png" alt="image-20260511215424426" style="zoom: 50%;" />
 
 通过pr的时候，你可以选择创建一个新的**合并提交（Create a merge commit）**，也可以选择**变基然后合并（Rebase and merge）**即把你功能分支的提交「接」到 main 最新节点后，main 全程一条直线，无 Merge 提交
 
 **不过特别注意！**如果你是用的**变基分支**在开发，最后提交pr的时候也要用**Rebase and merge**通过pr，不然最终不是一条直线。同时，在pr合并后，不要再用原来的分支提交，删除分支及其远程分支后重新建一个新分支修改，再提交pr。不然会出现下面一样的情况。
 
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511223313434.png" alt="image-20260511223313434" style="zoom:50%;" />
+<img src="images\image-20260511223313434.png" alt="image-20260511223313434" style="zoom:50%;" />
 
 图表又很多节点，一个接一个看起来很乱。
 
 **正确的做法是提交合并后直接删除远程分支**，不要再在这个分支上继续merge或者rebase
 
-<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511222707435.png" alt="image-20260511222707435" style="zoom:50%;" />
+<img src="images\image-20260511222707435.png" alt="image-20260511222707435" style="zoom:50%;" />
 
-![image-20260511223756531](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511223756531.png)
+![image-20260511223756531](images\image-20260511223756531.png)
 
 可以看到，删除分支后，main分支变得很清爽。这一般是用于不用保留分支记录的。至于为什么会出现两次一样的提交，就是因为我第一次提交pr的时候没有删除远程分支，而是又rebase了一遍。
 
