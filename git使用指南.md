@@ -630,7 +630,30 @@ git clone 仓库地址
 
 ###### 子仓库
 
+什么是 Git 子仓库？**他其实就是一个 Git 仓库里，嵌套另一个独立的 Git 仓库。你可以把它当成一个文件夹，但是他是不会出现在你主仓库的更改里的。**
 
+常见命令：
+
+```bash
+#查看所有子仓库
+git submodule
+git submodule status #地址+路径
+
+#添加子仓库
+git submodule add 仓库地址
+
+#更新子仓库代码
+git submodule update
+
+#删除子仓库
+git submodule deinit 子仓库名
+git rm 子仓库名
+rm -rf .git/modules/子仓库名
+```
+
+<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511214213926.png" alt="image-20260511214213926" style="zoom: 33%;" />
+
+可以看到我们在终端中添加子仓库后，子仓库出现在了我们的存储库中
 
 ## 仓库权限设置
 
@@ -692,6 +715,20 @@ Name 按自己的喜好取即可，我们主要在Target branch中添加 default
 
 ##### VsCode提交pr
 
+首先在扩展中下载GitHub Pull Requests
+
+ <img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511214939813.png" alt="image-20260511214939813" style="zoom:33%;" />
+
+进入该插件
+
+![image-20260511215103574](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511215103574.png)
+
+点击创建拉取请求
+
+<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511215159265.png" alt="image-20260511215159265" style="zoom:33%;" />
+
+做出对应修改即可
+
 
 
 #### 通过pr
@@ -701,6 +738,10 @@ Name 按自己的喜好取即可，我们主要在Target branch中添加 default
 ![image-20260511003909825](C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511003909825.png)
 
 你可以在每行的前面点击加号做出评论，最后点击右上角Submit review 可以选择通过或者打回。这里因为自己不能通过自己的pr，我就不演示了。
+
+vscode界面也是对应的，中文描述很清楚，我就不在讲述了
+
+<img src="C:\Users\13981\AppData\Roaming\Typora\typora-user-images\image-20260511215424426.png" alt="image-20260511215424426" style="zoom: 50%;" />
 
 ## 提交规范
 
@@ -730,5 +771,23 @@ git reset --soft HEAD~1
 
 #完全放弃当前所有修改
 git reset --hard HEAD~1
+```
+
+#### 3.我克隆一个含有远程子仓库的仓库时，为什么克隆完后的子仓库里面什么都没有？
+
+普通克隆不会下载子仓库！
+
+如果你用的是普通克隆：
+
+```bash
+git clone 仓库地址
+#在克隆完之后更新子仓库并初始化
+git submodule update --init --recursive
+```
+
+不过你也可以在克隆的开始加上 --recursive 可以把子仓库一块克隆下来
+
+```bash
+git clone --recursive 主仓库地址
 ```
 
